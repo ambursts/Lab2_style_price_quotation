@@ -1,0 +1,89 @@
+﻿@model Lab_2.Models.PriceQuotationModel
+
+
+<header class="bg-success text-white text-center p-4 mb-4">
+    <h1>
+        <i class="fas fa-money-bill-wave"></i>
+        Price Quotation
+    </h1>
+</header>
+
+<div class="container">
+
+
+   
+        <div class="row mb-3">
+            <label asp-for="Subtotal" class="col-md-4 col-form-label">
+                Subtotal
+            </label>
+
+            <div class="col-md-4">
+                <input asp-for="Subtotal" class="form-control" />
+            </div>
+
+            <div class="col-md-4">
+                <span asp-validation-for="Subtotal"
+                      class="text-danger"></span>
+            </div>
+        </div>
+
+        
+<!-- Discount Percent -->
+        <div class="row mb-4">
+            <label asp-for="DiscountPercent" class="col-md-4 col-form-label">
+                Discount Percent
+            </label>
+
+            <div class="col-md-4">
+                <input asp-for="DiscountPercent"
+                       class="form-control" />
+            </div>
+
+            <div class="col-md-4">
+                <span asp-validation-for="DiscountPercent"
+                      class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="row mb-3">
+            <div class="offset-md-4 col-md-8">
+                <button type="submit" class="btn btn-success me-2">
+                    Calculate
+                </button>
+
+                <a> 
+                </a>
+            </div>
+        </div>
+
+
+
+    @if (Model.Subtotal.HasValue && Model.DiscountPercent.HasValue)
+
+    {
+        <div class="row">
+            <div class="offset-md-4 col-md-8">
+                <p>
+                    Discount Amount:
+                    <strong>@Model.GetDiscountAmount().ToString("C")</strong>
+                </p>
+                <p>
+                    Total:
+                    <strong>@Model.GetTotal().ToString("C")</strong>
+                </p>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+
+
+
