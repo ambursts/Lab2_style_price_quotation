@@ -3,7 +3,12 @@ namespace Lab_2.Models
 {
     public class PriceQuotationModel
     {
-        [Required(ErrorMessage = "Please enter a subtotal.")]
+
+        /*struggled to clone so just copied code over from other lab and adjusted*/
+        /*pulled code chunks for view from FutureValue lab provided*/
+
+
+        [Required(ErrorMessage = "Please enter a sale price.")]
         [Range(0.01, double.MaxValue,
                    ErrorMessage = "Subtotal must be greater than 0.")]
         public decimal? Subtotal { get; set; }

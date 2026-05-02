@@ -1,40 +1,43 @@
 ﻿@model Lab_2.Models.PriceQuotationModel
 
-
-
 <header class="bg-success text-white text-center p-4 mb-4">
-    <h1>Price Quotation</h1>
+    <h1>
+        <i class= "fas fa-money-bill-wave"> </i>
+        Price Quotation
+    </h1>
 </header>
 
 <div class="container">
 
 <form method="post" action="/PriceQuotation/Index">
 
-    <!-- Subtotal -->
-    <div class="row mb-3">
-        <label class="col-md-4 col-form-label">
-            Subtotal:
-        </label>
-        <div class="col-md-4">
-            <input name="Subtotal"
-                   value="@Model.Subtotal"
-                   class="form-control" />
-        </div>
-    </div>
+        <div class="row mb-3">
+            <label class="col-md-4 col-form-label">
+                Subtotal:
+            </label>
 
-        <!-- Discount Percent -->
+            <div class="col-md-4">
+                <input asp-for="Subtotal" class="form-control" />
+            </div>
+
+            <div class="col-md-4">
+                <span asp-validation-for="Subtotal" class="text-danger"></span>
+            </div>
+        </div>
+    
         <div class="row mb-3">
             <label class="col-md-4 col-form-label">
                 Discount Percent:
             </label>
+
             <div class="col-md-4">
-                <input name="DiscountPercent"
-                       value="@Model.DiscountPercent"
-                       class="form-control" />
+                <input asp-for="DiscountPercent" class="form-control" />
+            </div>
+
+            <div class="col-md-4">
+                <span asp-validation-for="DiscountPercent" class="text-danger"></span>
             </div>
         </div>
-
-        <!-- Discount Amount -->
         <div class="row mb-2">
             <label class="col-md-4 col-form-label">
                 Discount Amount:
@@ -44,7 +47,6 @@
             </div>
         </div>
 
-        <!-- Total -->
         <div class="row mb-4">
             <label class="col-md-4 col-form-label">
                 Total:
@@ -52,23 +54,18 @@
             <div class="col-md-4 pt-2">
                 <strong>@Model.GetTotal().ToString("C")</strong>
             </div>
-        </div>    <!-- Buttons -->    
+        </div>  
+        
         <div class="row">       
             <div class="offset-md-4 col-md-4">  
                 <button type="submit" class="btn btn-success">           
                     Calculate           
                     </button>
-
-
-
-
                 <a href="/PriceQuotation/Index" class="btn btn-success ms-2">
                     Clear
                 </a>
-
-
-                    </div>   
-                 </div>
+              </div>   
+           </div>
     </form>
 </div>
 
